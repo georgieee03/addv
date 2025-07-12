@@ -25,6 +25,10 @@ class fifo_corner_test extends fifo_base_test;
   `uvm_component_utils(fifo_corner_test)
   int wr_per_rd = 2; // default 2:1
 
+  function new(string name="fifo_corner_test", uvm_component parent=null);
+    super.new(name, parent);
+  endfunction
+
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     void'($value$plusargs("WR_PER_RD=%0d", wr_per_rd));
