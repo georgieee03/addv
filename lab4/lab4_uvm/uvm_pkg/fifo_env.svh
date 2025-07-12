@@ -27,7 +27,6 @@ class fifo_env extends uvm_env;
     chk  = fifo_checker     ::type_id::create("chk" , this);
 
     if(!uvm_config_db#(int)::get(this,"","WR_PER_RD", WR_PER_RD)) WR_PER_RD = 1;
-    rcg = new();
   endfunction
 
   function void connect_phase(uvm_phase phase);

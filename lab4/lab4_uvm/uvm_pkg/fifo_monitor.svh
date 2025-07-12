@@ -21,13 +21,12 @@ class fifo_monitor extends uvm_monitor;
   endfunction
 
   // coverage group inside the monitor
-  covergroup fifo_cg @(posedge w_vif.clk);
+  covergroup fifo_cg;
     cp_depth  : coverpoint (w_vif.full  ? 16 :
                              r_vif.empty ? 0  :
                              8 ) { bins empty = {0};
                                    bins mid[] = {[1:15]};
                                    bins full  = {16}; }
-    cp_ratio  : coverpoint ($get_coverage()) { option.weight = 0; }
     cp_flags  : coverpoint {w_vif.full,r_vif.empty};
     cross cp_depth, cp_flags;
   endgroup
@@ -43,7 +42,6 @@ class fifo_monitor extends uvm_monitor;
         txn.data     = w_vif.data;
         txn.timestamp= $time;
         ap.write(txn);
-        fifo_cg.sample();
       end
 
       // --- read side -------------------------------------------------------
@@ -54,7 +52,6 @@ class fifo_monitor extends uvm_monitor;
         txn.data     = r_vif.data;
         txn.timestamp= $time;
         ap.write(txn);
-        fifo_cg.sample();
       end
     end
   endtask
