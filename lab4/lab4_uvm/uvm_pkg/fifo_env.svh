@@ -8,14 +8,13 @@ class fifo_env extends uvm_env;
   fifo_checker      chk;
 
   int WR_PER_RD;
-  covergroup ratio_cg_t;
+  covergroup rcg;
     cp_ratio: coverpoint WR_PER_RD {
       bins syn      = {1};
       bins fast_wr  = {2,3,4};
       bins fast_rd  = {0};
     }
-  endgroup : ratio_cg_t
-  ratio_cg_t rcg;
+  endgroup
 
   function new(string n, uvm_component p); super.new(n,p); endfunction
 
