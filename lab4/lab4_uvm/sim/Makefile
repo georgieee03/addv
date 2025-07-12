@@ -1,11 +1,11 @@
 LOG_LEVEL ?= 2
 
 # Location of the reference UVM installation; override from the shell if needed
-UVM_HOME ?= $(VCS_HOME)/etc/uvm-1.2
+UVM_HOME ?= $(VCS_HOME)/verilog_src/uvm-1.2
 UVM_INC  := +incdir+$(UVM_HOME)/src
 
 # Common compile flags
-COMP_FLAGS = -full64 -sverilog +define+DUMP=1 -debug_access+all -kdb \
+COMP_FLAGS = -full64 -sverilog -ntb_opts uvm +define+DUMP=1 -debug_access+all -kdb \
              -timescale=1ns/1ps +plusarg_save +log_level=$(LOG_LEVEL) \
              $(UVM_INC) +define+UVM +incdir+../uvm_pkg
 
