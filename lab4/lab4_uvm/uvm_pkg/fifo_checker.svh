@@ -16,6 +16,6 @@ class fifo_checker extends uvm_component;
       `uvm_fatal("NOVIF","Read VIF missing")
   endfunction
 
-  // module instance sitting inside the component
-  dpi_checker dpi(.write(w_vif), .read(r_vif));
+  // Module instance cannot be placed inside a class. The dpi_checker is expected
+  // to be instantiated in the top-level testbench or via a bind directive.
 endclass 
