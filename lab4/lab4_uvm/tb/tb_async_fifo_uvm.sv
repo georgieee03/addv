@@ -12,11 +12,13 @@ module tb_async_fifo_uvm;
 
   // programmable ratio from +WR_PER_RD
   int WR_PER_RD;
+  time rd_delay;
   initial begin
     if(!$value$plusargs("WR_PER_RD=%d", WR_PER_RD)) WR_PER_RD = 1;
+    rd_delay = WR_PER_RD * 5; // timescale 1ns ⇒ 5 ns base
   end
   always #5  wclk = ~wclk;                 // base 100 MHz
-  always #5*WR_PER_RD rclk = ~rclk;        // variable read clock
+  always #(rd_delay) rclk = ~rclk;         // variable read clock
 
   // interfaces
   write_if #(DATA_WIDTH,ADDR_WIDTH) w_if (.clk(wclk), .rst_n(rst_n));
