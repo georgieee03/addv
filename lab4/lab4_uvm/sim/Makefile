@@ -1,7 +1,7 @@
 LOG_LEVEL ?= 2
 
 # Location of the reference UVM installation; override from the shell if needed
-UVM_HOME ?= $(VCS_HOME)/../../verilog_src/uvm-1.2
+UVM_HOME ?= $(VCS_HOME)/etc/uvm-1.2
 UVM_INC  := +incdir+$(UVM_HOME)/src
 
 # Common compile flags
