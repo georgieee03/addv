@@ -2,7 +2,7 @@ LOG_LEVEL ?= 2
 
 # Location of the reference UVM installation; override from the shell if needed
 UVM_HOME ?= $(VCS_HOME)/../../verilog_src/uvm-1.2
-UVM_INC  := -I$(UVM_HOME)/src
+UVM_INC  := +incdir+$(UVM_HOME)/src
 
 # Common compile flags
 COMP_FLAGS = -full64 -sverilog +define+DUMP=1 -debug_access+all -kdb \
@@ -10,7 +10,7 @@ COMP_FLAGS = -full64 -sverilog +define+DUMP=1 -debug_access+all -kdb \
              $(UVM_INC) +define+UVM +incdir+../uvm_pkg
 
 # Source files
-SRC_RTL  = ../src/*.sv
+SRC_RTL  = ../../src/*.sv
 SRC_PKG  = ../uvm_pkg/uvm_pkg.svh
 TB_TOP   = ../tb/tb_async_fifo_uvm.sv
 
