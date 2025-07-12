@@ -26,7 +26,7 @@ module tb_async_fifo_uvm;
 
   // DUT
   async_fifo #(.DATA_WIDTH(DATA_WIDTH), .ADDR_WIDTH(ADDR_WIDTH))
-             dut ( .w_if(w_if), .r_if(r_if) );
+             dut ( .write(w_if), .read(r_if) );
 
   // reset sequence (no run command!)
   initial begin
