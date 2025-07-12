@@ -39,6 +39,6 @@ module tb_async_fifo_uvm;
     uvm_config_db#(virtual read_if  #(DATA_WIDTH,ADDR_WIDTH))::set(null,"*","r_vif", r_if);
   end
 
-  // kick UVM
-  initial run_test();  // test selected via +UVM_TESTNAME
+  // kick UVM (default to fifo_base_test if +UVM_TESTNAME not supplied)
+  initial run_test("fifo_base_test");
 endmodule 
