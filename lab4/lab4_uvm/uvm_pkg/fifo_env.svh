@@ -16,7 +16,10 @@ class fifo_env extends uvm_env;
     }
   endgroup
 
-  function new(string n, uvm_component p); super.new(n,p); endfunction
+  function new(string n, uvm_component p);
+    super.new(n,p);
+    rcg = new();
+  endfunction
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
