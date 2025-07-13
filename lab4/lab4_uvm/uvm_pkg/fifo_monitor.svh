@@ -56,7 +56,7 @@ class fifo_monitor extends uvm_monitor;
     empty_x_addr  : cross cp_empty_flag, cp_raddr;
     ae_x_addr     : cross cp_ae_flag,    cp_raddr;
 
-  endgroup : fifo_cg_t
+  endgroup : fifo_cg_t;
 
   fifo_cg_t m_cg;
 
