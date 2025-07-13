@@ -10,6 +10,7 @@ class fifo_monitor extends uvm_monitor;
   function new(string name, uvm_component parent);
     super.new(name, parent);
     ap = new("ap", this);
+    m_cg = new();
   endfunction
 
   virtual function void build_phase(uvm_phase phase);
@@ -57,7 +58,7 @@ class fifo_monitor extends uvm_monitor;
 
   endgroup
 
-  fifo_cg m_cg = new();
+  fifo_cg m_cg;
 
   task run_phase(uvm_phase phase);
     fifo_seq_item txn;
