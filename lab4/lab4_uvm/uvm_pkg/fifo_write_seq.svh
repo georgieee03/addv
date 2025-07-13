@@ -7,10 +7,10 @@ class fifo_write_seq extends uvm_sequence #(fifo_seq_item);
   // -------------------------------------------------------------
   //  Local cover-group to capture every randomized burst length
   // -------------------------------------------------------------
-  covergroup burst_cg;
+  covergroup burst_len_cg_t;
     cp_burst_len : coverpoint burst_len { bins len[] = {[1:32]}; }
-  endgroup
-  static burst_cg g_burst = new;
+  endgroup : burst_len_cg_t;
+  static burst_len_cg_t g_burst = new;
 
   task body();
     fifo_seq_item item;
