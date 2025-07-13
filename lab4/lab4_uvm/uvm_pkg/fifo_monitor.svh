@@ -24,7 +24,7 @@ class fifo_monitor extends uvm_monitor;
   // -------------------------------------------------------------------------
   //  FIFO functional coverage – addresses, pointers, flags, depth
   // -------------------------------------------------------------------------
-  covergroup fifo_cg_t;
+  covergroup m_cg;
 
     // Write / read address coverage (lower 4 bits)
     cp_waddr : coverpoint w_vif.addr[3:0] { bins all_addr[] = {[0:15]}; }
@@ -56,9 +56,7 @@ class fifo_monitor extends uvm_monitor;
     empty_x_addr  : cross cp_empty_flag, cp_raddr;
     ae_x_addr     : cross cp_ae_flag,    cp_raddr;
 
-  endgroup : fifo_cg_t;
-
-  fifo_cg_t m_cg;
+  endgroup : m_cg;
 
   task run_phase(uvm_phase phase);
     fifo_seq_item txn;
