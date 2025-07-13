@@ -39,9 +39,4 @@ class fifo_env extends uvm_env;
   function void end_of_elaboration_phase(uvm_phase phase);
 
   endfunction
-
-  function void start_of_simulation_phase(uvm_phase phase);
-    super.start_of_simulation_phase(phase);
-    rcg.sample();
-  endfunction
 endclass 
